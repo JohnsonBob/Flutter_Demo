@@ -20,9 +20,10 @@ class Home extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return Scaffold(
+            backgroundColor: Colors.grey[100],
             appBar: AppBar(
                 title: Text('JohnsonLists'),
-                elevation: 10.0,
+                elevation: 20.0,
             ),
             body: ListView.builder(
                 itemCount: posts.length,
@@ -38,7 +39,17 @@ class Home extends StatelessWidget {
             child: Column(
                 children: <Widget>[
                     Image.network(posts[index].imageUrl),
-                    Text(posts[index].title)
+                    SizedBox(height: 16),
+                    Text(
+                        posts[index].title,
+                        style: Theme.of(context).textTheme.title,
+                    ),
+                    Text(
+                        posts[index].author,
+                        style: Theme.of(context).textTheme.subhead,
+                    ),
+                    SizedBox(height: 16),
+
                 ],
             ),
         );
