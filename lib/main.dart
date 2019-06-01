@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'demo/MyListView.dart';
 import 'model/post.dart';
 
 void main() => runApp(MyApp());
@@ -8,6 +9,7 @@ class MyApp extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return MaterialApp(
+            debugShowCheckedModeBanner: false,
             home: Home(),
             theme: ThemeData(
                 primarySwatch: Colors.yellow
@@ -24,38 +26,19 @@ class Home extends StatelessWidget {
             appBar: AppBar(
                 title: Text('JohnsonLists'),
                 elevation: 20.0,
+                leading: IconButton(
+                    icon: Icon(Icons.menu),
+                    tooltip: 'Navigration',
+                    onPressed: ()=> debugPrint('Navigration is on pressed')
+                ),
             ),
-            body: ListView.builder(
-                itemCount: posts.length,
-                itemBuilder: _listItemBulider
-            ),
-        );
-    }
-
-    Widget _listItemBulider(BuildContext context, int index) {
-        return Container(
-            color: Colors.white,
-            margin: EdgeInsets.all(8.0),
-            child: Column(
-                children: <Widget>[
-                    Image.network(posts[index].imageUrl),
-                    SizedBox(height: 16),
-                    Text(
-                        posts[index].title,
-                        style: Theme.of(context).textTheme.title,
-                    ),
-                    Text(
-                        posts[index].author,
-                        style: Theme.of(context).textTheme.subhead,
-                    ),
-                    SizedBox(height: 16),
-
-                ],
-            ),
+            body: MyListView(),
         );
     }
 
 }
+
+
 
 
 
