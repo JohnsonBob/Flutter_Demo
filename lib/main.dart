@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'demo/MyListView.dart';
+import 'demo/botton_navigation_bar_damo.dart';
 import 'model/post.dart';
 
 void main() => runApp(MyApp());
@@ -21,6 +22,8 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -55,11 +58,7 @@ class Home extends StatelessWidget {
           ),
         ),
         body: TabBarView(children: [
-          Icon(
-            Icons.local_florist,
-            size: 128.0,
-            color: Colors.black12,
-          ),
+          MyListView(),
           Icon(
             Icons.change_history,
             size: 128.0,
@@ -137,7 +136,9 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
+        bottomNavigationBar: BottomNavigationBarDemo(),
       ),
     );
   }
+
 }
