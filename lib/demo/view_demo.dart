@@ -4,7 +4,7 @@ import '../model/post.dart';
 class ViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridViewCountDemo();
+    return GridViewExtentDemo();
   }
 
 
@@ -129,3 +129,28 @@ class GridViewCountDemo extends StatelessWidget {
 
 }
 
+class GridViewExtentDemo extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return GridView.extent(
+      maxCrossAxisExtent: 100,
+      crossAxisSpacing: 10.0,
+      mainAxisSpacing: 10.0,
+      children: _bulidTiles(100),
+//      scrollDirection: Axis.horizontal,
+    );
+  }
+
+  List<Widget> _bulidTiles(int count) {
+    return List.generate(count, (int index){
+      return Container(
+        color: Colors.grey[300],
+        alignment: Alignment(0.0, 0.0),
+        child: Text(
+          'Item $index',
+          style: TextStyle(fontSize: 18.0, color: Colors.grey),
+        ),
+      );
+    });
+  }
+}
