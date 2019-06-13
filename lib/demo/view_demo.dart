@@ -4,7 +4,7 @@ import '../model/post.dart';
 class ViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridViewExtentDemo();
+    return GridViewBuilderDemo();
   }
 
 
@@ -115,7 +115,7 @@ class GridViewCountDemo extends StatelessWidget {
   }
 
   List<Widget> _bulidTiles(int count) {
-    return List.generate(count, (int index){
+    return List.generate(count, (int index) {
       return Container(
         color: Colors.grey[300],
         alignment: Alignment(0.0, 0.0),
@@ -129,7 +129,7 @@ class GridViewCountDemo extends StatelessWidget {
 
 }
 
-class GridViewExtentDemo extends StatelessWidget{
+class GridViewExtentDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.extent(
@@ -142,7 +142,7 @@ class GridViewExtentDemo extends StatelessWidget{
   }
 
   List<Widget> _bulidTiles(int count) {
-    return List.generate(count, (int index){
+    return List.generate(count, (int index) {
       return Container(
         color: Colors.grey[300],
         alignment: Alignment(0.0, 0.0),
@@ -152,5 +152,31 @@ class GridViewExtentDemo extends StatelessWidget{
         ),
       );
     });
+  }
+}
+
+class GridViewBuilderDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 20.0,
+            mainAxisSpacing: 20.0
+        ),
+        //设置内边距
+        padding: EdgeInsets.all(10.0),
+        itemCount: posts.length,
+        itemBuilder: _itemBuilder
+    );
+  }
+
+  Widget _itemBuilder(BuildContext context, int index) {
+    return Container(
+        child: Image.network(
+          posts[index].imageUrl,
+          fit: BoxFit.cover,
+        )
+    );
   }
 }
