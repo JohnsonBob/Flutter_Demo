@@ -3,6 +3,7 @@ import 'demo/basic_demo.dart';
 
 import 'demo/MyListView.dart';
 import 'demo/botton_navigation_bar_damo.dart';
+import 'demo/sliver_demo.dart';
 import 'demo/view_demo.dart';
 import 'model/post.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: SliverDemo(),
       theme: ThemeData(
           primarySwatch: Colors.yellow,
           //水波纹效果
