@@ -28,6 +28,7 @@ class RegistFromeState extends StatefulWidget {
 class _RegistFromeStateState extends State<RegistFromeState> {
   final registFromKey = GlobalKey<FormState>();
   String username,password;
+  var isautovalidate = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,20 +40,26 @@ class _RegistFromeStateState extends State<RegistFromeState> {
             decoration: InputDecoration(
               hintText: 'input username',
               labelText: 'Username',
+              helperText: '',
             ),
             onSaved: (value){
               username = value;
             },
+            validator: validatotUsername,
+            autovalidate: isautovalidate,
           ),
           TextFormField(
             obscureText: true,
             decoration: InputDecoration(
               hintText: 'input password',
               labelText: 'Password',
+              helperText: '',
             ),
             onSaved: (value){
               password = value;
             },
+            validator: validatotPassword,
+            autovalidate: isautovalidate,
           ),
           SizedBox(
             height: 32.0,
@@ -72,8 +79,30 @@ class _RegistFromeStateState extends State<RegistFromeState> {
   }
 
   void submitRegistFrom() {
-    registFromKey.currentState.save();
-    debugPrint('username: $username, password: $password');
+
+    //第一次验证表单失败后启动自动验证
+    if(registFromKey.currentState.validate()){
+      registFromKey.currentState.save();
+      debugPrint('username: $username, password: $password');
+
+      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Regist...')));
+    }else{
+      setState(() {
+        isautovalidate = true;
+      });
+    }
+  }
+
+  String validatotUsername(String value) {
+    if(value.isEmpty){
+      return 'Username is required';
+    }
+  }
+
+  String validatotPassword(String value) {
+    if(value.isEmpty){
+      return 'Password is required';
+    }
   }
 }
 
