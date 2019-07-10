@@ -4,6 +4,7 @@ import 'demo/basic_demo.dart';
 import 'demo/MyListView.dart';
 import 'demo/botton_navigation_bar_damo.dart';
 import 'demo/form_demo.dart';
+import 'demo/material_component.dart';
 import 'demo/navigation_demo.dart';
 import 'demo/sliver_demo.dart';
 import 'demo/view_demo.dart';
@@ -17,11 +18,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 //      home: Home(),
-      initialRoute: '/form',
+      initialRoute: '/mcs',
       routes: ({
         '/': (context) => NavigationDemo(),
         '/about': (context) => Page(title: 'about'),
-        '/form': (context) => FromDemo()
+        '/form': (context) => FromDemo(),
+        '/mcs': (context) => MaterialComponent()
       }),
       theme: ThemeData(
           primarySwatch: Colors.yellow,
