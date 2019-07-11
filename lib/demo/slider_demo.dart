@@ -1,55 +1,74 @@
 import 'package:flutter/material.dart';
+import "package:intl/intl.dart";
 
-class SliderDemo extends StatefulWidget {
+class DateTimeDemo extends StatefulWidget {
   @override
-  _SliderDemoState createState() => _SliderDemoState();
+  _DateTimeDemoState createState() => _DateTimeDemoState();
 }
 
-class _SliderDemoState extends State<SliderDemo> {
-  var _sliderValueA = 0.0;
-  var _sliderValueB = 0.0;
+class _DateTimeDemoState extends State<DateTimeDemo> {
+  var _selecteDate = DateTime.now();
+  var _selecteTime = TimeOfDay(hour: 9, minute: 30);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SliderDemo'),
+        title: Text('DateTimeDemo'),
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Slider(
-              value: _sliderValueA,
-              activeColor: Theme.of(context).accentColor,
-              inactiveColor: Theme.of(context).accentColor.withOpacity(0.3),
-              onChanged: (value) {
-                setState(() {
-                  _sliderValueA = value;
-                });
-              },
-            ),
-            SizedBox(height: 80,),
-            Text('sliderValue： ${_sliderValueB.toInt()}'),
-            SizedBox(height: 20,),
-            Slider(
-              value: _sliderValueB,
-              activeColor: Theme.of(context).accentColor,
-              inactiveColor: Theme.of(context).accentColor.withOpacity(0.3),
-              onChanged: (value) {
-                setState(() {
-                  _sliderValueB = value;
-                });
-              },
-              min: 0.0,
-              max: 10,
-              divisions: 10,  //均分为多少份
-              label: '${_sliderValueB.toInt()}',
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                InkWell(
+                  onTap: _onSelectDate,
+                  child: Row(
+                    children: <Widget>[
+                      Text(DateFormat.yMMMMd().format(_selecteDate)),
+                      Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
+                ),
+                InkWell(
+                  onTap: _onSelectTime,
+                  child: Row(
+                    children: <Widget>[
+                      Text(_selecteTime.format(context)),
+                      Icon(Icons.arrow_drop_down),
+                    ],
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _onSelectDate() async {
+    final DateTime selecteTime1 = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1993),
+      lastDate: DateTime.now(),
+    );
+    if (selecteTime1 == null) return;
+    setState(() {
+      _selecteDate = selecteTime1;
+    });
+  }
+
+  Future<void> _onSelectTime() async {
+    final time =
+        await showTimePicker(context: context, initialTime: _selecteTime);
+    if (time == null) return;
+    setState(() {
+      _selecteTime = time;
+    });
   }
 }

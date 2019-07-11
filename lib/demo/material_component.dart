@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'button_demo.dart';
 import 'checkbox_demo.dart';
+import 'datetime_demo.dart';
 import 'floating_action_button_demo.dart';
 import 'form_demo.dart';
 import 'popup_menu_button_demo.dart';
@@ -28,6 +29,7 @@ class MaterialComponent extends StatelessWidget {
           ListItem(title: "Radio", page: RadioDemo()),
           ListItem(title: "Switch", page: SwitchDemo()),
           ListItem(title: "Slider", page: SliderDemo()),
+          ListItem(title: "DateTime", page: DateTimeDemo()),
         ],
       ),
     );
