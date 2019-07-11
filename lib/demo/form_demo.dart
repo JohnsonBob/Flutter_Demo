@@ -4,6 +4,9 @@ class FromDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('FromDemo'),
+      ),
       body: Theme(
         data: Theme.of(context).copyWith(primaryColor: Colors.black),
         child: Container(

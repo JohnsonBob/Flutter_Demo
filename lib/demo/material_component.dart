@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'button_demo.dart';
+import 'checkbox_demo.dart';
 import 'floating_action_button_demo.dart';
+import 'form_demo.dart';
 import 'popup_menu_button_demo.dart';
+import 'radio_demo.dart';
+import 'switch_demo.dart';
 
 class MaterialComponent extends StatelessWidget {
   @override
@@ -14,10 +18,14 @@ class MaterialComponent extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(title: "From", page: FromDemo()),
           ListItem(
               title: "FloatingActionButton", page: FloatingActionButtonDemo()),
-          ListItem(title: "ButtonDemo", page: ButtonDemo()),
-          ListItem(title: "PopupMenuButtonDemo", page: PopupMenuButtonDemo()),
+          ListItem(title: "Button", page: ButtonDemo()),
+          ListItem(title: "PopupMenuButton", page: PopupMenuButtonDemo()),
+          ListItem(title: "CheckBox", page: CheckBoxDemo()),
+          ListItem(title: "Radio", page: RadioDemo()),
+          ListItem(title: "Switch", page: SwitchDemo()),
         ],
       ),
     );
@@ -41,9 +49,6 @@ class ListItem extends StatelessWidget {
     );
   }
 }
-
-
-
 
 class _widget extends StatelessWidget {
   @override

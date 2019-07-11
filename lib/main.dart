@@ -29,7 +29,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.yellow,
           //水波纹效果
           highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
-          splashColor: Colors.white70),
+          splashColor: Colors.white70,
+          accentColor: Colors.blue,
+      ),
+
     );
   }
 }
