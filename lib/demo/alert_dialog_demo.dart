@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:intl/intl.dart";
 
-enum Option { A, B, C, D }
+enum Action { cancel, ok }
 
 class AlertDialogDemo extends StatefulWidget {
   @override
@@ -9,7 +9,7 @@ class AlertDialogDemo extends StatefulWidget {
 }
 
 class _AlertDialogDemoState extends State<AlertDialogDemo> {
-  var _choice = "Nothing";
+  var _action = "Nothing";
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,11 @@ class _AlertDialogDemoState extends State<AlertDialogDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+              'you choice is : $_action',
+              style: TextStyle(fontSize: 25),
+            ),
+            SizedBox(height: 40,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -37,12 +42,26 @@ class _AlertDialogDemoState extends State<AlertDialogDemo> {
     );
   }
 
-  void _openAlertDialog() {
-    showDialog(
+  void _openAlertDialog() async {
+    var action = await showDialog(
         context: context,
         builder: _builderAlterDialog,
-        barrierDismissible: false   //在空白处关闭
-    );
+        barrierDismissible: false //在空白处关闭
+        );
+
+    switch (action) {
+      case Action.cancel:
+        setState(() {
+          _action = 'cancel';
+        });
+        break;
+
+      case Action.ok:
+        setState(() {
+          _action = 'ok';
+        });
+        break;
+    }
   }
 
   Widget _builderAlterDialog(BuildContext context) {
@@ -53,13 +72,13 @@ class _AlertDialogDemoState extends State<AlertDialogDemo> {
         FlatButton(
           child: Text('Cancle'),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(context, Action.cancel);
           },
         ),
         FlatButton(
           child: Text('Ok'),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(context, Action.ok);
           },
         ),
       ],
