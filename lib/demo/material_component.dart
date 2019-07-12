@@ -5,6 +5,7 @@ import 'bottom_sheet_demo.dart';
 import 'button_demo.dart';
 import 'checkbox_demo.dart';
 import 'datetime_demo.dart';
+import 'expansion_panel_demo.dart';
 import 'floating_action_button_demo.dart';
 import 'form_demo.dart';
 import 'popup_menu_button_demo.dart';
@@ -38,6 +39,7 @@ class MaterialComponent extends StatelessWidget {
           ListItem(title: "AlertDialog", page: AlertDialogDemo()),
           ListItem(title: "BottomSheet", page: BottomSheetDemo()),
           ListItem(title: "SnackBar", page: SnackBarDemo()),
+          ListItem(title: "ExpansionPanel", page: ExpansionPanelDemo()),
         ],
       ),
     );
