@@ -7,6 +7,7 @@ import 'floating_action_button_demo.dart';
 import 'form_demo.dart';
 import 'popup_menu_button_demo.dart';
 import 'radio_demo.dart';
+import 'simple_dialog_demo.dart';
 import 'slider_demo.dart';
 import 'switch_demo.dart';
 
@@ -30,6 +31,7 @@ class MaterialComponent extends StatelessWidget {
           ListItem(title: "Switch", page: SwitchDemo()),
           ListItem(title: "Slider", page: SliderDemo()),
           ListItem(title: "DateTime", page: DateTimeDemo()),
+          ListItem(title: "SimpleDialog", page: SimpleDialogDemo()),
         ],
       ),
     );
