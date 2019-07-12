@@ -11,6 +11,7 @@ import 'popup_menu_button_demo.dart';
 import 'radio_demo.dart';
 import 'simple_dialog_demo.dart';
 import 'slider_demo.dart';
+import 'snack_bar_demo.dart';
 import 'switch_demo.dart';
 
 class MaterialComponent extends StatelessWidget {
@@ -36,6 +37,7 @@ class MaterialComponent extends StatelessWidget {
           ListItem(title: "SimpleDialog", page: SimpleDialogDemo()),
           ListItem(title: "AlertDialog", page: AlertDialogDemo()),
           ListItem(title: "BottomSheet", page: BottomSheetDemo()),
+          ListItem(title: "SnackBar", page: SnackBarDemo()),
         ],
       ),
     );
