@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'alert_dialog_demo.dart';
 import 'button_demo.dart';
 import 'checkbox_demo.dart';
 import 'datetime_demo.dart';
@@ -32,6 +33,7 @@ class MaterialComponent extends StatelessWidget {
           ListItem(title: "Slider", page: SliderDemo()),
           ListItem(title: "DateTime", page: DateTimeDemo()),
           ListItem(title: "SimpleDialog", page: SimpleDialogDemo()),
+          ListItem(title: "AlertDialog", page: AlertDialogDemo()),
         ],
       ),
     );
